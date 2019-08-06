@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model WeatherReport.Models.WeatherModel
+<style>
+    #ShyamDiv {
+        padding-left: 20px;
+    }
+
+        #ShyamDiv select, #ShyamDiv button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        #ShyamDiv #message table {
+            width: 100%;
+            border: solid 3px green;
+            color: blue;
+            font-style: oblique;
+            font-family: Georgia;
+            font-weight: bold;
+            background: lightcoral;
+        }
+
+            #ShyamDiv #message table th {
+                text-align: left;
+                color: white;
+                font-style: oblique;
+                background: Blue;
+            }
+</style>
+@{ ViewBag.Title = "Weather API IN ASP.NET MVC";}
+<br/>
+<br/>
+<h2 style="background-color: lightcoral;color: wheat; text-align: center">Shyam'S Weather API TO GET Weather REPORT OF PLACES</h2>
+<fieldset>
+    <legend style="font-family:Arial Black;color:blue">CHECK LATEST Weather REPORT</legend>
+    <div id="ShyamDiv">
+        <h4 style="color:crimson">Choose Place To Check Weather Report</h4>
+        @using (Html.BeginForm("Index", "WeatherMap", FormMethod.Post, new
+        { enctype = "multipart/form-data" }))
+        {
+            @Html.TextBoxFor(m => m.postedFile, new { type = "file" })
+            @Html.ValidationMessageFor(m => m.postedFile)
+            <button name="submit">Get Report</button>
+        }
+
+    </div>
+    <div>@ViewBag.Message</div>
+</fieldset>
+
+
+<footer>
+    <p style="background-color: lightcoral; font-weight: bold; color:wheat; text-align: center; font-style: oblique">© @DateTime.Now.ToLocalTime()</p> @*Add Date Time*@
+</footer>
+
